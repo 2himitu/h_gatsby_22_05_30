@@ -1,11 +1,12 @@
 import React from "react";
+import Layout from "../components/layout";
 
 function testSpacePage(){
   return(
-    <main>
+    <Layout>
       <title>testSpacePage</title>
       <h1>testSpacePage입니다.</h1>
-    </main>
+    </Layout>
   );
 }
 export default testSpacePage;
