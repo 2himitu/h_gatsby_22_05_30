@@ -19,3 +19,4 @@ function Layout({Children}){
   );
 
 }
+export default Layout;
