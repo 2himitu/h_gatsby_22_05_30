@@ -1,22 +1,36 @@
 import { Link } from "gatsby";
-import React, { Children } from "react";
+import React from "react";
+import {
+  container,
+  heading,
+  navLinks,
+  navLinkItem,
+  navLinkText,
+} from "./layout.module.css";
 
-function Layout({Children}){
-  return(
-    <main>
-      <div style={{display:"flex",gap:10}}>
-        <Link to="/">홈</Link>
-        <Link to="/about">어바웃</Link>
-        <Link to="/test">테스트</Link>
-        <Link to="/test-space">테스트 스페이스</Link>
-      </div>
-      {Children}
-      <div>
-        copyright....
-      </div>
-    </main>
-
+function Layout({ pageTitle, children }) {
+  return (
+    <div className={container}>
+      <title>{pageTitle}</title>
+      <nav>
+        <ul className={navLinks}>
+          <li className={navLinkItem}>
+            <Link to="/" className={navLinkText}>
+              Home
+            </Link>
+          </li>
+          <li className={navLinkItem}>
+            <Link to="/about" className={navLinkText}>
+              About
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <main>
+        <h1 className={heading}>{pageTitle}</h1>
+        {children}
+      </main>
+    </div>
   );
-
 }
 export default Layout;
