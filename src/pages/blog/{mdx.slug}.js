@@ -7,6 +7,7 @@ import { MDXProvider } from "@mdx-js/react";
 import CodeBlock from "../../components/CodeBlock";
 
 const BlogPost = ({ data }) => {
+  const tags = data.mdx.frontmatter.tags;
   const image =
     data.mdx.frontmatter.hero_image &&
     getImage(data.mdx.frontmatter.hero_image);
@@ -23,6 +24,8 @@ const BlogPost = ({ data }) => {
             Photo Credit:{" "}
             <a
               target="_blank"
+              without
+              rel="noreferrer"
               href={data.mdx.frontmatter.hero_image_credit_link}
             >
               {data.mdx.frontmatter.hero_image_credit_text}
@@ -37,6 +40,7 @@ const BlogPost = ({ data }) => {
       >
         <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </MDXProvider>
+      {tags && <div>TAGS:{tags.join(", ")}</div>}
     </Layout>
   );
 };
@@ -47,6 +51,7 @@ export const query = graphql`
       body
       frontmatter {
         title
+        tags
         date(formatString: "MMMM DD, YYYY")
         hero_image_alt
         hero_image_credit_link
